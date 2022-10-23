@@ -1,16 +1,16 @@
 Hari_Tanggal,temperature_siang,temperatur_malam,UV_Index,Bulan_Terbenam,Bulan_Terbit,Fase_Bulan,Matahari_Terbit,Matahari_Terbenam,Kecepatan_Angin,Humidity,Perkiraan_Cuaca
-Malam ini,--,25,0 dari 10,7.57,20.43,Benjol Akhir,on,on,SBD 18 km/j,77%,ThunderstormBadai Petir Lebat
-Jum 14,32,24,Ekstrem,8.45,21.35,Benjol Akhir,5.31,17.45,UBL 15 km/j,74%,ThunderstormBadai Petir
-Sab 15,32,25,Ekstrem,9.34,22.27,Benjol Akhir,5.31,17.45,TL 14 km/j,79%,ThunderstormBadai Petir
-Min 16,32,25,Ekstrem,10.25,23.18,Benjol Akhir,5.30,17.45,UBL 14 km/j,60%,Scattered ThunderstormsBadai Petir Terpencar
-Sen 17,32,25,Ekstrem,11.16,--,Benjol Akhir,5.30,17.45,UBL 15 km/j,70%,ThunderstormBadai Petir
-Sel 18,32,25,Ekstrem,12.08,0.09,Triwulan Akhir,5.30,17.45,BL 15 km/j,61%,ThunderstormBadai Petir
-Rab 19,31,25,Ekstrem,12.57,0.56,Sabit Akhir,5.29,17.45,BBL 15 km/j,75%,ThunderstormBadai Petir
-Kam 20,32,25,Ekstrem,13.45,1.41,Sabit Akhir,5.29,17.45,BL 14 km/j,66%,ThunderstormBadai Petir
-Jum 21,32,25,Ekstrem,14.32,2.25,Sabit Akhir,5.29,17.45,BBL 14 km/j,60%,ThunderstormBadai Petir
-Sab 22,32,24,Ekstrem,15.18,3.06,Sabit Akhir,5.28,17.45,B 15 km/j,60%,ThunderstormBadai Petir
-Min 23,32,25,Ekstrem,16.05,3.46,Sabit Akhir,5.28,17.45,B 14 km/j,60%,ThunderstormBadai Petir
-Sen 24,32,25,Ekstrem,16.52,4.28,Sabit Akhir,5.28,17.45,BBL 15 km/j,60%,ThunderstormBadai Petir
-Sel 25,32,25,Ekstrem,17.42,5.10,Baru,5.27,17.45,BBL 15 km/j,60%,ThunderstormBadai Petir
-Rab 26,32,24,Ekstrem,18.35,5.56,Sabit Awal,5.27,17.45,BL 15 km/j,60%,ThunderstormBadai Petir
-Kam 27,32,25,Ekstrem,19.32,6.46,Sabit Awal,5.27,17.45,BBL 15 km/j,60%,ThunderstormBadai Petir
+Hari ini,34,25,9 dari 10,16.05,3.46,Sabit Akhir,5.28,17.45,B 14 km/j,17%,Mostly CloudySebagian Besar Berawan
+Sen 24,31,25,Ekstrem,16.52,4.28,Sabit Akhir,5.28,17.45,B 19 km/j,66%,ThunderstormBadai Petir
+Sel 25,31,25,Ekstrem,17.42,5.10,Baru,5.27,17.45,B 17 km/j,81%,ThunderstormBadai Petir
+Rab 26,31,24,Ekstrem,18.35,5.56,Sabit Awal,5.27,17.45,B 16 km/j,67%,ThunderstormBadai Petir
+Kam 27,31,24,Ekstrem,19.32,6.46,Sabit Awal,5.27,17.45,B 14 km/j,79%,ThunderstormBadai Petir
+Jum 28,32,24,Ekstrem,20.33,7.40,Sabit Awal,5.27,17.45,BBL 14 km/j,65%,Scattered ThunderstormsBadai Petir Petang
+Sab 29,32,24,Ekstrem,21.36,8.40,Sabit Awal,5.26,17.45,BL 13 km/j,73%,Scattered ThunderstormsBadai Petir Petang
+Min 30,32,24,Ekstrem,22.40,9.42,Sabit Awal,5.26,17.45,UBL 13 km/j,51%,Scattered ThunderstormsBadai Petir Terpencar
+Sen 31,32,25,Ekstrem,23.39,10.46,Sabit Awal,5.26,17.45,UBL 14 km/j,60%,Scattered ThunderstormsBadai Petir Petang
+Sel 01,31,25,Ekstrem,--,11.47,Triwulan Pertama,5.26,17.46,UBL 13 km/j,60%,ThunderstormBadai Petir
+Rab 02,31,25,Ekstrem,0.35,12.45,Benjol Awal,5.26,17.46,BL 13 km/j,60%,ThunderstormBadai Petir
+Kam 03,31,25,Ekstrem,1.26,13.38,Benjol Awal,5.25,17.46,BL 13 km/j,60%,ThunderstormBadai Petir
+Jum 04,31,25,Ekstrem,2.13,14.30,Benjol Awal,5.25,17.46,UBL 13 km/j,60%,ThunderstormBadai Petir
+Sab 05,31,25,Ekstrem,2.57,15.18,Benjol Awal,5.25,17.46,U 14 km/j,60%,ThunderstormBadai Petir
+Min 06,31,25,Ekstrem,3.39,16.06,Benjol Awal,5.25,17.46,BL 14 km/j,60%,ThunderstormBadai Petir
