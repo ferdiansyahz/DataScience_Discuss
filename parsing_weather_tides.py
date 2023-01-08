@@ -1,79 +1,135 @@
-import requests
 from bs4 import BeautifulSoup
+import time
+from selenium import webdriver
 import pandas as pd
+from pathlib import Path
 
-url = "https://weather.com/id-ID/weather/tenday/l/Kramat+Daerah+Khusus+Ibukota+Jakarta?canonicalCityId=9d5f83a2a29b1f4aa5272fca53aa871b328c5ee66f6882d07480f0a94b37565c#detailIndex5"
+url = 'https://weather.com/id-ID/weather/tenday/l/Kramat+Daerah+Khusus+Ibukota+Jakarta?canonicalCityId=9d5f83a2a29b1f4aa5272fca53aa871b328c5ee66f6882d07480f0a94b37565c#detailIndex5'
+url2 = 'https://www.tideschart.com/Indonesia/Jakarta/Weekly/'
 
-r = requests.get(url,verify=False)
-soup = BeautifulSoup(r.content, "lxml")
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--disable-extensions")
+chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_argument("--no-sandbox")
+user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36'
+chrome_options.add_argument(f'user-agent={user_agent}')
 
+driver = webdriver.Chrome(chrome_options = chrome_options)
+driver2 = webdriver.Chrome(chrome_options = chrome_options)
 
-df = pd.DataFrame(columns = [
-'Hari_Tanggal',
-'temperature_siang',
-'temperatur_malam',
-'UV_Index',
-'Bulan_Terbenam',
-'Bulan_Terbit', 
-'Fase_Bulan', 
-'Matahari_Terbit',
-'Matahari_Terbenam',
-'Kecepatan_Angin',
-'Humidity',
-'Perkiraan_Cuaca'
-])
-print(df)
+time.sleep(0.5)
+driver.get(url)
+driver2.get(url2)
+time.sleep(0.5)
 
-n=0
-for j in range(n,15):
+soup = BeautifulSoup(driver.page_source, 'lxml')
+soup2 = BeautifulSoup(driver2.page_source, 'lxml')
 
-    hari = "detailIndex"+str(j)
+df_01 = list()
+for el in soup.find().find_all("summary",{"class" : "Disclosure--Summary--3GiL4 DaypartDetails--Summary--3Fuya Disclosure--hideBorderOnSummaryOpen--3_ZkO"}):
+    df_01.append(el.get_text("\n",strip=True).split("\n"))
 
-    waktu = soup.find(id=hari).find("h3", {"data-testid": "daypartName", "class": "DetailsSummary--daypartName--2FBp2"})
+df_01 = pd.DataFrame(df_01)
+df_01 = df_01.drop(df_01.columns[[2, 4, 6, 8, 9,11]], axis=1)
+df_01 = df_01.drop(labels = [6,7,8,9,10,11,12,13], axis=0)
+#display(df_01)
 
-    temp_data_siang = soup.find(id=hari).find("span", {"data-testid": "TemperatureValue", "class": "DetailsSummary--highTempValue--3Oteu"})
-    temp_data_malam = soup.find(id=hari).find("span", {"data-testid": "TemperatureValue", "class": "DetailsSummary--lowTempValue--3H-7I"})
+df_all = []
+
+col_all =[
+    "Hari",
+    "Temperature_siang_Celcius",
+    "Temperature_malam_Celcius",
+    "Prediksi_cuaca",
+    "Kemungkinan_hujan_persen",
+    "Kecepatan_angin_km_per_hour",
+    "Waktu_tide_1",
+    "Tide_1_meter",
+    "Waktu_tide_2",
+    "Tide_2_meter"
+]
+df_all = pd.DataFrame(df_all, columns=col_all)
+
+#display(df_all)
+
+df_02 = list()
+
+for el in soup2.find().find_all("table",{"class" : "table table-hover tidechart mb-4"}):
+    fic2 = el.get_text("\n",strip=True)
+    #print(fic)
+    df_02.append(el.get_text("\n",strip=True).split("\n"))
+
+df_02 = pd.DataFrame(df_02)
+
+df_02_temp = []
+df_02_temp = pd.DataFrame(df_02_temp, columns = ["0","1","2","3","4"])
+df_02_temp = pd.DataFrame(df_02_temp)
+
+a = 7
+b = 8
+c = 10
+d = 11
+e = 13
+
+x = 1
+y = 8
+while x < y:
+    val_col_02 = [
+        df_02.iloc[0,a],
+        df_02.iloc[0,b],
+        df_02.iloc[0,c],
+        df_02.iloc[0,d],
+        df_02.iloc[0,e],
+    ]
+    df_02_temp.loc[len(df_02_temp)] = val_col_02
+    x += 1
+    a += 11
+    b += 11
+    c += 11
+    d += 11
+    e += 11
     
-    humid = soup.find(id=hari).find("span", {"data-testid": "PercentageValue"})
+df_02 = df_02_temp.drop(labels = 0, axis=0)
+df_02.index = range(len(df_02))
+#df_02_temp.rename(df_02_temp.iloc[0], axis=0, inplace=True)
+#df_02 = df_02_temp.drop(df_02_temp.index[0], axis = 0, inplace=True)
+#display(df_02)
 
-    uv_index = soup.find(id=hari).find("span", {"data-testid": "UVIndexValue", "class": "DetailsTable--value--1q_qD"})
-    bulan_terbenam = soup.find(id=hari).find("span", {"data-testid": "MoonsetTime", "class": "DetailsTable--value--1q_qD"})
-    bulan_terbit = soup.find(id=hari).find("span", {"data-testid": "MoonriseTime", "class": "DetailsTable--value--1q_qD"})
-    Fase_bulan = soup.find(id=hari).find("span", {"data-testid": "moonPhase", "class": "DetailsTable--moonPhrase--2WlTc"})
+df_all["Hari"] = df_01.iloc[:,0]
+df_all["Temperature_siang_Celcius"] = df_01.iloc[:,1]
+df_all["Temperature_malam_Celcius"] = df_01.iloc[:,2]
+df_all["Prediksi_cuaca"] = df_01.iloc[:,3]
+df_all["Kemungkinan_hujan_persen"] = df_01.iloc[:,4]
+df_all["Kecepatan_angin_km_per_hour"] = df_01.iloc[:,5]
 
-    Matahari_terbit = soup.find(id=hari).find("span", {"data-testid": "SunriseTime", "class": "DetailsTable--value--1q_qD"})
-    Matahari_terbenam = soup.find(id=hari).find("span", {"data-testid": "SunsetTime", "class": "DetailsTable--value--1q_qD"})
-
-    Kecepatan_angin = soup.find(id=hari).find("span", {"data-testid": "Wind", "class": "Wind--windWrapper--3aqXJ DailyContent--value--37sk2"})
-
-    perkiraan = soup.find(id=hari).find("div", {"data-testid": "wxIcon", "class": "DetailsSummary--condition--24gQw"})
-    
-    #Â°
-   
-    Mat_ter = str(Matahari_terbit)
-    Mat_terben = str(Matahari_terbenam)
-    char_1 = '">'
-    char_2 = '</'
-    Mat_ter = Mat_ter[Mat_ter.find(char_1) + 2 : Mat_ter.find(char_2)]
-    Mat_terben = Mat_terben[Mat_terben.find(char_1) + 2 : Mat_terben.find(char_2)]
+df_all["Waktu_tide_1"] = df_02.iloc[:,1]
+df_all["Tide_1_meter"] = df_02.iloc[:,2]
+df_all["Waktu_tide_2"] =df_02.iloc[:,3]
+df_all["Tide_2_meter"] = df_02.iloc[:,4]
+#display(df_all)
 
 
-    df.loc[n] = [waktu.text, 
-    temp_data_siang.text[:2], 
-    temp_data_malam.text[:2], 
-    uv_index.text, 
-    bulan_terbenam.text, 
-    bulan_terbit.text,
-    Fase_bulan.text, 
-    Mat_ter, 
-    Mat_terben, 
-    Kecepatan_angin.text, 
-    humid.text, 
-    perkiraan.text]
-    n = n+1
-    
-    
-print(df)
+df_all['Temperature_siang_Celcius'] = df_all.Temperature_siang_Celcius.str.findall('([-+]?\d*\.?\d+)')
+df_all['Temperature_malam_Celcius'] = df_all.Temperature_malam_Celcius.str.findall('([-+]?\d*\.?\d+)')
+df_all['Kemungkinan_hujan_persen'] = df_all.Kemungkinan_hujan_persen.str.findall('([-+]?\d*\.?\d+)')
+df_all['Kecepatan_angin_km_per_hour'] = df_all.Kecepatan_angin_km_per_hour.str.findall('([-+]?\d*\.?\d+)')
+df_all['Tide_1_meter'] = df_all.Tide_1_meter.str.findall('([-+]?\d*\.?\d+)')
+df_all['Tide_2_meter'] = df_all.Tide_2_meter.str.findall('([-+]?\d*\.?\d+)')
 
-#df.to_csv('C:/Users/P5CD1/OneDrive/Documents/GitHub/DataScience_Discuss/Parsing_weather.csv', index = False)
-    
+#df_all.apply(pd.Series.explode)
+#df_all.explode()
+#display(df_all)
+df_all = df_all.apply(pd.Series.explode)
+#display(df_all)
+
+my_file = Path("data_weather_tides.csv")
+if my_file.is_file():
+    df_csv_01 = pd.read_csv("data_weather_tides.csv")
+    #df_csv_01 = pd.concat([df_csv_01, df_all])
+    df_csv_01.merge(df_all, how='outer', on='Hari')
+    df_csv_01.to_csv("data_weather_tides.csv", index = False)
+else :
+    df_all.to_csv("data_weather_tides.csv", index = False)
+
+driver.quit()
