@@ -1,7 +1,7 @@
 Hari,Temperature_siang_Celcius,Temperature_malam_Celcius,Prediksi_cuaca,Kemungkinan_hujan_persen,Kecepatan_angin_km_per_hour,Waktu_tide_1,Tide_1_meter,Waktu_tide_2,Tide_2_meter
-Sen 09,31,24,Badai Petir Terpencar,59,18,10:39am,1.0,9:39pm,0.2
-Sel 10,32,24,Badai Petir Petang,43,16,10:49am,1.0,10:02pm,0.3
-Rab 11,32,24,Badai Petir Petang,51,15,10:54am,1.0,10:15pm,0.3
-Kam 12,32,24,Badai Petir Petang,74,13,10:47am,0.9,10:13pm,0.4
-Jum 13,32,24,Badai Petir Petang,64,14,10:16am,0.8,9:44pm,0.4
-Sab 14,31,24,Badai Petir Terisolasi,35,13,9:10am,0.8,8:33pm,0.4
+Sen 09,31,24,Badai Petir Terpencar,53,18,10:39am,1,9:39pm,0.2
+Sel 10,32,24,Badai Petir Petang,42,15,10:49am,1,10:02pm,0.3
+Rab 11,32,24,Badai Petir Petang,53,14,10:54am,1,10:15pm,0.3
+Kam 12,32,24,Badai Petir Petang,63,14,10:47am,0.9,10:13pm,0.4
+Jum 13,32,24,Badai Petir Petang,60,15,10:16am,0.8,9:44pm,0.4
+Sab 14,32,24,Badai Petir Petang,34,13,9:10am,0.8,8:33pm,0.4

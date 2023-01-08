@@ -247,9 +247,10 @@ df_all = df_all.apply(pd.Series.explode)
 my_file = Path("data_water_level.csv")
 if my_file.is_file():
     df_csv_01 = pd.read_csv("data_water_level.csv")
-    #df_csv_01 = pd.concat([df_csv_01, df_all])
-    df_csv_01.merge(df_all, how='outer', on='Tanggal')
-    df_csv_01.to_csv("data_water_level.csv", index = False)
+
+    result = pd.concat([df_csv_01, df_all]).drop_duplicates(subset=["Tanggal"], keep="last")
+    
+    result.to_csv("data_water_level.csv", index = False)
 else :
     df_all.to_csv("data_water_level.csv", index = False)
 

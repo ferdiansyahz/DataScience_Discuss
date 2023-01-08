@@ -127,8 +127,9 @@ my_file = Path("data_weather_tides.csv")
 if my_file.is_file():
     df_csv_01 = pd.read_csv("data_weather_tides.csv")
     #df_csv_01 = pd.concat([df_csv_01, df_all])
-    df_csv_01.merge(df_all, how='outer', on='Hari')
-    df_csv_01.to_csv("data_weather_tides.csv", index = False)
+    result = pd.concat([df_csv_01, df_all]).drop_duplicates(subset=["Hari"], keep="last")
+    #df_csv_01.merge(df_all, how='outer', on='Hari')
+    result.to_csv("data_weather_tides.csv", index = False)
 else :
     df_all.to_csv("data_weather_tides.csv", index = False)
 
