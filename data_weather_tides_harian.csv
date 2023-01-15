@@ -1,3 +1,5 @@
 Hari,Temperature_siang_Celcius,Temperature_malam_Celcius,Prediksi_cuaca,Kemungkinan_hujan_persen,Kecepatan_angin_km_per_hour,Waktu_tide_1,Tide_1_meter,Waktu_tide_2,Tide_2_meter,id,Datetime,DatetimeHari
-Sel 10,32,24,Badai Petir Petang,60,15,10:49am,1,10:02pm,0.3,,2023-01-09 18:59:30.212007,
-Rab 11,32,24,Sebagian Berawan,24,15,10:54am,1,10:15pm,0.3,,2023-01-10 08:42:50.942429,
+Sel 10,32,24,Badai Petir Petang,60,15,10:49am,1.0,10:02pm,0.3,,2023-01-09 18:59:30.212007,
+Rab 11,32,24,Sebagian Berawan,24,15,10:54am,1.0,10:15pm,0.3,,2023-01-10 08:42:50.942429,
+Jum 13,31,24,Badai Petir Petang,77,16,10:16am,0.8,9:44pm,0.4,,2023-01-12 11:35:47.965936,
+Sab 14,33,24,Badai Petir Petang,51,16,9:10am,0.8,8:33pm,0.4,,2023-01-13 14:31:27.999908,
